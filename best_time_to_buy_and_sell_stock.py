@@ -21,3 +21,5 @@ class Solution:
             min_val = min(prices[i], min_val)
 
         return dp[len_prices - 1]
+
+
