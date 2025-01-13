@@ -40,6 +40,7 @@ class Solution:
         return self.total_income
 
 
+
 sol = Solution()
 print(sol.maxProfit(prices=[7, 1, 5, 3, 6, 4]))
 print(sol.maxProfit(prices=[1, 2, 3, 4, 5]))
