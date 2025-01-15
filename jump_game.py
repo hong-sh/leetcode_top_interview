@@ -9,24 +9,32 @@ from typing import List
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
         len_nums = len(nums)
-        can_reach = [False for _ in range(len_nums)]
-        can_reach[-1] = True
+        goal = len_nums - 1
 
-        for i in range(len_nums - 2, -1, -1):
-            maximum_jump = nums[i]
-            if i + maximum_jump >= len_nums - 1:
-                can_reach[i] = True
-                continue
+        for i in range(goal - 1, -1, -1):
+            if i + nums[i] >= goal:
+                goal = i
 
-            for j in range(i + 1, i + maximum_jump + 1):
-                if can_reach[j] == True:
-                    can_reach[i] = True
-                    continue
+        return True if goal == 0 else False
 
-        return can_reach[0]
+        # can_reach = [False for _ in range(len_nums)]
+        # can_reach[-1] = True
+
+        # for i in range(len_nums - 2, -1, -1):
+        #     maximum_jump = nums[i]
+        #     if i + maximum_jump >= len_nums - 1:
+        #         can_reach[i] = True
+        #         continue
+
+        #     for j in range(i + 1, i + maximum_jump + 1):
+        #         if can_reach[j] == True:
+        #             can_reach[i] = True
+        #             continue
+
+        # return can_reach[0]
 
 
 sol = Solution()
-# print(sol.canJump(nums=[2, 3, 1, 1, 4]))
-# print(sol.canJump(nums=[3, 2, 1, 0, 4]))
+print(sol.canJump(nums=[2, 3, 1, 1, 4]))
+print(sol.canJump(nums=[3, 2, 1, 0, 4]))
 print(sol.canJump(nums=[1, 2, 3]))
